@@ -23,7 +23,7 @@ def cashierApi(request, id=0):
 
     elif request.method == 'PUT':
         cashier_data = JSONParser().parse(request)
-        cashier = Cashiers.objects.get(Cashiers_ID=cashier_data['Cashiers_ID'])
+        cashier = Cashiers.objects.get(Cashiers_ID=cashier_data['id'])
         cashier_serializer = CashiersSerializer(cashier, data=cashier_data)
         if cashier_serializer.is_valid():
             cashier_serializer.save()
@@ -56,7 +56,7 @@ def accountApi(request, id=0):
 
     elif request.method == 'PUT':
         account_data = JSONParser().parse(request)
-        account = Accounts.objects.get(Cashiers_ID=account_data['Cashiers_ID'])
+        account = Accounts.objects.get(Cashiers_ID=account_data['cashiers_id'])
         account_serializer = AccountsSerializer(account, data=account_data)
         if account_serializer.is_valid():
             account_serializer.save()
