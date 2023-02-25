@@ -1,6 +1,13 @@
 from rest_framework import generics
-from cashiers.serializers import CashiersSerializer, AccountsSerializer
+from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer
 from cashiers.models import Cashiers, Accounts
+
+"""
+Notes
+CreateAPIView - [POST] create something 
+ListAPIView - [GET] get from db
+RetrieveUpdateDestroyAPIView - [GET, PUT, UPDATE, DELETE]
+"""
 
 
 # region: Cashier View
@@ -22,7 +29,7 @@ class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 # region: Account View
 class AccountCreateView(generics.CreateAPIView):
-    serializer_class = AccountsSerializer
+    serializer_class = AccountCreateSerializer
     queryset = Accounts.objects.all()
 
 
