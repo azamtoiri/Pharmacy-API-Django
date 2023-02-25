@@ -21,8 +21,8 @@ class Cashiers(models.Model):
 class Accounts(models.Model):
     accounts_id = models.AutoField(primary_key=True)
     cashiers_id = models.ForeignKey(Cashiers, on_delete=models.CASCADE, related_name='cashiers_id')
-    login = models.CharField(max_length=50, unique=True, verbose_name='Логин')
-    password = models.CharField(max_length=250, verbose_name='Пароль')
+    login = models.CharField(max_length=50, unique=True, verbose_name='Логин', null=False)
+    password = models.CharField(max_length=250, null=False, verbose_name='Пароль')
 
     def __str__(self):
         return self.login
