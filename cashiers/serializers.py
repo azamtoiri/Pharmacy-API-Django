@@ -9,6 +9,8 @@ class AccountsSerializer(serializers.ModelSerializer):
 
 
 class AccountCreateSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = Accounts
         fields = ['cashiers_id', 'login', 'password']

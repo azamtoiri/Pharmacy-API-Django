@@ -1,6 +1,8 @@
 from rest_framework import generics
-from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer
+from django.contrib.auth.hashers import make_password
+
 from cashiers.models import Cashiers, Accounts
+from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer
 
 """
 Notes
@@ -30,7 +32,10 @@ class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
 # region: Account View
 class AccountCreateView(generics.CreateAPIView):
     serializer_class = AccountCreateSerializer
-    queryset = Accounts.objects.all()
+
+    def perform_create(self, serializer):
+        password = make_password(serializer.validated_data['password'])
+        serializer.save(password=password)
 
 
 class AccountListView(generics.ListAPIView):
