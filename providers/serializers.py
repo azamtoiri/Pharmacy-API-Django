@@ -20,3 +20,10 @@ class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
         fields = ['id', 'name', 'amount', 'provider', 'end_date', 'provider']
+
+
+class MedicineCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Medicine
+        fields = ['id', 'name', 'amount', 'provider', 'end_date']
