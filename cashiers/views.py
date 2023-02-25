@@ -1,5 +1,6 @@
 from rest_framework import generics
 from django.contrib.auth.hashers import make_password
+from rest_framework.permissions import IsAdminUser
 
 from cashiers.models import Cashiers, Accounts
 from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer
@@ -15,6 +16,7 @@ RetrieveUpdateDestroyAPIView - [GET, PUT, UPDATE, DELETE]
 # region: Cashier View
 class CashierCreateView(generics.CreateAPIView):
     serializer_class = CashiersSerializer
+    permission_classes = (IsAdminUser, )
 
 
 class CashierListView(generics.ListAPIView):
@@ -24,6 +26,7 @@ class CashierListView(generics.ListAPIView):
 
 class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CashiersSerializer
+    permission_classes = (IsAdminUser, )
     queryset = Cashiers.objects.all()
 
 
@@ -32,6 +35,7 @@ class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
 # region: Account View
 class AccountCreateView(generics.CreateAPIView):
     serializer_class = AccountCreateSerializer
+    permission_classes = (IsAdminUser, )
 
     def perform_create(self, serializer):
         password = make_password(serializer.validated_data['password'])
@@ -46,5 +50,6 @@ class AccountListView(generics.ListAPIView):
 class AccountDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AccountsSerializer
     queryset = Accounts.objects.all()
+    permission_classes = (IsAdminUser, )
 
 # endregion
