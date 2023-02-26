@@ -1,4 +1,6 @@
 from rest_framework import generics
+from rest_framework.permissions import IsAdminUser
+
 # from rest_framework.permissions import IsAdminUser
 
 from providers.models import Medicine, Provider
@@ -9,7 +11,7 @@ from providers.serializers import ProviderSerializer, MedicineSerializer, LocalP
 # region: Providers
 class ProviderCreateView(generics.CreateAPIView):
     serializer_class = ProviderSerializer
-    # permission_classes = ...
+    permission_classes = (IsAdminUser,)
 
 
 class ProviderListView(generics.ListAPIView):
@@ -19,6 +21,7 @@ class ProviderListView(generics.ListAPIView):
 
 class ProviderDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProviderSerializer
+    permission_classes = (IsAdminUser,)
     queryset = Provider.objects.all()
 
 
@@ -28,7 +31,7 @@ class ProviderDetailView(generics.RetrieveUpdateDestroyAPIView):
 # region: Medicines
 class MedicineCreateView(generics.CreateAPIView):
     serializer_class = MedicineCreateSerializer
-    # permission_classes = ...
+    permission_classes = (IsAdminUser,)
 
 
 class MedicineListView(generics.ListAPIView):
@@ -38,6 +41,7 @@ class MedicineListView(generics.ListAPIView):
 
 class MedicineDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MedicineSerializer
+    permission_classes = (IsAdminUser,)
     queryset = Medicine.objects.all()
 
 # endregion"

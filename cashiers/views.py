@@ -7,6 +7,7 @@ from cashiers.serializers import CashiersSerializer, AccountsSerializer, Account
 
 """
 Notes
+ListCreateAPIView - [POST, GET] method on one
 CreateAPIView - [POST] create something 
 ListAPIView - [GET] get from db
 RetrieveUpdateDestroyAPIView - [GET, PUT, UPDATE, DELETE]
