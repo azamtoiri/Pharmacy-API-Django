@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from django.contrib.auth import get_user_model
 
 from cashiers.models import Cashiers, Accounts
-from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer
+from cashiers.serializers import CashiersSerializer, AccountsSerializer, AccountCreateSerializer, CashiersUpdateDeleteSerializer
 
 """
 Notes
@@ -27,7 +27,7 @@ class CashierListView(generics.ListAPIView):
 
 
 class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CashiersSerializer
+    serializer_class = CashiersUpdateDeleteSerializer
     permission_classes = (IsAdminUser,)
     queryset = Cashiers.objects.all()
 
