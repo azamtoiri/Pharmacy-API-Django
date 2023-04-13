@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAdminUser
 
 from providers.models import Medicine, Provider
 from providers.serializers import ProviderSerializer, MedicineSerializer, LocalProviderSerializer, \
-    MedicineCreateSerializer
+    MedicineCreateSerializer, MedicineUpdateDeleteSerializer
 
 
 # region: Providers
@@ -40,7 +40,7 @@ class MedicineListView(generics.ListAPIView):
 
 
 class MedicineDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = MedicineSerializer
+    serializer_class = MedicineUpdateDeleteSerializer
     permission_classes = (IsAdminUser,)
     queryset = Medicine.objects.all()
 

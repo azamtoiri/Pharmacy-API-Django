@@ -11,7 +11,7 @@ class ProviderSerializer(serializers.ModelSerializer):
 class LocalProviderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Provider
-        fields = ['name', 'address', 'phone_number']
+        fields = ['id', 'name', 'address', 'phone_number']
 
 
 class MedicineSerializer(serializers.ModelSerializer):
@@ -22,8 +22,14 @@ class MedicineSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'amount', 'provider', 'end_date', 'provider']
 
 
-class MedicineCreateSerializer(serializers.ModelSerializer):
+class MedicineUpdateDeleteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Medicine
-        fields = ['id', 'name', 'amount', 'provider', 'end_date']
+        fields = ['name', 'amount', 'end_date']
+
+
+class MedicineCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Medicine
+        fields = ['name', 'amount', 'provider', 'end_date']

@@ -4,8 +4,8 @@ from providers import views
 
 urlpatterns = [
     # region: Providers url
-    path('api/providers/create', views.ProviderCreateView.as_view(), name='providers_create'),
     path('api/providers/', views.ProviderListView.as_view(), name='providers_list'),
+    path('api/providers/create', views.ProviderCreateView.as_view(), name='providers_create'),
     path('api/providers/<int:pk>', views.ProviderDetailView.as_view(), name='providers_detail'),
     # endregion
 
