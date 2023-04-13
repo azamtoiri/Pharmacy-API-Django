@@ -11,6 +11,9 @@ class Cashiers(models.Model):
     address = models.CharField(max_length=250, verbose_name='Адрес')
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
+    class Meta:
+        ordering = ('id',)
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
