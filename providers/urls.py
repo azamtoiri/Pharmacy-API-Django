@@ -10,8 +10,8 @@ urlpatterns = [
     # endregion
 
     # region: Medicines url
-    path('api/medicines/create', views.MedicineCreateView.as_view(), name='medicine_create'),
     path('api/medicines/', views.MedicineListView.as_view(), name='medicine_list'),
+    path('api/medicines/create', views.MedicineCreateView.as_view(), name='medicine_create'),
     path('api/medicines/<int:pk>', views.MedicineDetailView.as_view(), name='medicine_detail'),
     # endregion
 ]

@@ -26,7 +26,7 @@ class MedicineUpdateDeleteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Medicine
-        fields = ['name', 'amount', 'end_date']
+        fields = ['name', 'amount', 'provider', 'end_date']
 
 
 class MedicineCreateSerializer(serializers.ModelSerializer):

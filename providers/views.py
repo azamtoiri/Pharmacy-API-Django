@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
 
@@ -37,6 +38,8 @@ class MedicineCreateView(generics.CreateAPIView):
 class MedicineListView(generics.ListAPIView):
     serializer_class = MedicineSerializer
     queryset = Medicine.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name', 'amount']
 
 
 class MedicineDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -44,4 +47,4 @@ class MedicineDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminUser,)
     queryset = Medicine.objects.all()
 
-# endregion"
+# endregion
