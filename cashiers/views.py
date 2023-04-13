@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
 
@@ -24,6 +25,8 @@ class CashierCreateView(generics.CreateAPIView):
 class CashierListView(generics.ListAPIView):
     serializer_class = CashiersSerializer
     queryset = Cashiers.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['first_name', 'last_name', 'brith_date']
 
 
 class CashierDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -44,6 +47,8 @@ class CreateAccountView(generics.CreateAPIView):
 class AccountListView(generics.ListAPIView):
     serializer_class = AccountsSerializer
     queryset = Accounts.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['username', 'is_superuser', 'is_active']
 
 
 class AccountDetailView(generics.RetrieveUpdateDestroyAPIView):
