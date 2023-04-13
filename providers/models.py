@@ -16,7 +16,8 @@ class Provider(models.Model):
 class Medicine(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     amount = models.PositiveIntegerField(verbose_name='Количество')
-    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='provider', verbose_name='Поставщик')
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='provider', verbose_name='Поставщик',
+                                 null=True)
     end_date = models.DateField(null=True, blank=True, default=None, verbose_name='Срок годности')
 
     class Meta:
