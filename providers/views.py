@@ -41,7 +41,7 @@ class MedicineListView(generics.ListAPIView):
     serializer_class = MedicineSerializer
     queryset = Medicine.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'amount']
+    filterset_fields = ['name', 'amount', 'provider']
 
 
 class MedicineDetailView(generics.RetrieveUpdateDestroyAPIView):
