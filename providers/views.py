@@ -18,6 +18,8 @@ class ProviderCreateView(generics.CreateAPIView):
 class ProviderListView(generics.ListAPIView):
     serializer_class = LocalProviderSerializer
     queryset = Provider.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
 
 
 class ProviderDetailView(generics.RetrieveUpdateDestroyAPIView):
