@@ -9,7 +9,7 @@ UserModel = get_user_model()
 class AccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Accounts
-        fields = ['cashiers_id', 'id', 'username', 'password', 'is_superuser', 'is_active', 'last_login']
+        fields = ['cashiers_id', 'id', 'username', 'is_superuser', 'is_active', 'last_login']
 
 
 class AccountCreateSerializer(serializers.ModelSerializer):
