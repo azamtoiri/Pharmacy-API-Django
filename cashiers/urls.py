@@ -9,6 +9,7 @@ urlpatterns = [
 
     # accounts
     path('api/accounts/create', views.CreateAccountView.as_view(), name="create_user"),
+    path('accounts/profile/', views.AccountListView.as_view(), name="accounts_profile"),
     path('api/accounts/', views.AccountListView.as_view(), name="get_account"),
     path('api/accounts/<int:pk>', views.AccountDetailView.as_view(), name="accounts_detail"),
 ]
