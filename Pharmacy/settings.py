@@ -74,9 +74,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',  # delete this for exclude html forms
     ],
-    "DEFAULT_PARSER_CLASSES": [
+    'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
-    ],
+        'rest_framework.parsers.FormParser',
+    ),
 }
 
 AUTH_PASSWORD_VALIDATORS = [
