@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 # from rest_framework.permissions import IsAdminUser
 
@@ -18,6 +18,7 @@ class ProviderCreateView(generics.CreateAPIView):
 class ProviderListView(generics.ListAPIView):
     serializer_class = LocalProviderSerializer
     queryset = Provider.objects.all()
+    permission_classes = (IsAuthenticated,)
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
 
@@ -40,6 +41,7 @@ class MedicineCreateView(generics.CreateAPIView):
 class MedicineListView(generics.ListAPIView):
     serializer_class = MedicineSerializer
     queryset = Medicine.objects.all()
+    permission_classes = (IsAuthenticated,)
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name', 'amount', 'provider']
 
